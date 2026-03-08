@@ -133,6 +133,12 @@
             overflow-x: auto;
             margin: 15px 0;
             font-family: 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.5;
+        }
+
+        .chat-message .code-block {
+            font-size: 0.9em;
         }
 
         .btn {
@@ -312,8 +318,7 @@ mv appian-locust-steering.md .kiro/steering/
                 </div>
                 <div class="chat-message kiro-message">
                     <strong>Kiro:</strong> Here's a basic Appian Locust test structure:
-                    <div class="code-block" style="margin-top: 10px;">
-from locust import HttpUser, task
+                    <div class="code-block" style="margin-top: 10px;">from locust import HttpUser, task
 from appian_locust import AppianTaskSet
 
 class MyTaskSet(AppianTaskSet):
@@ -329,8 +334,7 @@ class MyTaskSet(AppianTaskSet):
 class UserActor(HttpUser):
     tasks = [MyTaskSet]
     host = 'https://mysite.appiancloud.com'
-    auth = ["username", "password"]
-                    </div>
+    auth = ["username", "password"]</div>
                     <p>This creates a basic test that navigates to a site and interacts with a record. Would you like to see more advanced examples?</p>
                 </div>
 
