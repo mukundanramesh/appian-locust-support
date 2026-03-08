@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appian Locust + Kiro - AI-Powered Testing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            opacity: 0.9;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .setup-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .setup-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .step {
+            display: flex;
+            align-items: start;
+            gap: 20px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .demo-chat {
+            background: #f5f5f5;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .chat-message {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .user-message {
+            background: #667eea;
+            color: white;
+            margin-left: 50px;
+        }
+
+        .kiro-message {
+            background: white;
+            margin-right: 50px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Appian Locust + Kiro</h1>
+            <p class="subtitle">AI-Powered Performance Testing Made Simple</p>
+        </header>
+
+        <div class="hero">
+            <h2 style="color: #667eea; margin-bottom: 20px;">What is This?</h2>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">
+                A simple steering file that makes Kiro IDE an expert in Appian Locust performance testing. 
+                Ask questions in natural language, get instant answers with code examples!
+            </p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://appian-locust.readthedocs.io/" class="btn">📚 Official Documentation</a>
+                <a href="https://github.com/mukundanramesh/appian-locust-support" class="btn">💻 GitHub Repository</a>
+                <a href="#setup" class="btn">⚡ Quick Setup</a>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Zero Installation</h3>
+                <p>Just copy one file. No pip, no MCP server, no dependencies. Works immediately.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Always Up-to-Date</h3>
+                <p>Reads documentation directly from GitHub. Always get the latest information.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Easy to Share</h3>
+                <p>Commit to your repo or send the file. Everyone gets the same experience.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Natural Language</h3>
+                <p>Ask questions in plain English. Kiro understands and provides relevant answers.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>Multiple Sources</h3>
+                <p>Combines GitHub docs and ReadTheDocs for comprehensive coverage.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Code Examples</h3>
+                <p>Get working code examples for every scenario. Copy, paste, customize.</p>
+            </div>
+        </div>
+
+        <div class="setup-section" id="setup">
+            <h2 style="color: #667eea; margin-bottom: 30px;">Setup in 30 Seconds</h2>
+            
+            <div class="setup-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Download the Steering File</h3>
+                        <p>Get <code>appian-locust-steering.md</code> from the repository</p>
+                        <div class="code-block">
+curl -O https://raw.githubusercontent.com/mukundanramesh/appian-locust-support/main/appian-locust-steering.md
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Copy to Your Project</h3>
+                        <p>Place it in your project's .kiro/steering directory</p>
+                        <div class="code-block">
+mkdir -p .kiro/steering
+mv appian-locust-steering.md .kiro/steering/
+                        </div>
+                        <p style="margin-top: 10px;"><em>Or copy to ~/.kiro/steering/ to use across all projects</em></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Start Using!</h3>
+                        <p>Open Kiro and ask about Appian Locust</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 style="color: #667eea; margin-bottom: 30px;">See It In Action</h2>
+            
+            <div class="demo-chat">
+                <div class="chat-message user-message">
+                    <strong>You:</strong> How do I write an Appian Locust test?
+                </div>
+                <div class="chat-message kiro-message">
+                    <strong>Kiro:</strong> Here's a basic Appian Locust test structure:
+                    <div class="code-block" style="margin-top: 10px;">
+from locust import HttpUser, task
+from appian_locust import AppianTaskSet
+
+class MyTaskSet(AppianTaskSet):
+    @task
+    def my_test(self):
+        # Navigate to a site
+        self.appian.visitor.visit_site("My Site")
+        
+        # Interact with UI
+        form = self.appian.visitor.visit_record_type("MyRecord")
+        form.click_button(label="Submit")
+
+class UserActor(HttpUser):
+    tasks = [MyTaskSet]
+    host = 'https://mysite.appiancloud.com'
+    auth = ["username", "password"]
+                    </div>
+                    <p>This creates a basic test that navigates to a site and interacts with a record. Would you like to see more advanced examples?</p>
+                </div>
+
+                <div class="chat-message user-message">
+                    <strong>You:</strong> How do I debug if my test fails?
+                </div>
+                <div class="chat-message kiro-message">
+                    <strong>Kiro:</strong> Here are the key debugging techniques:
+                    <ol style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Enable debug logging:</strong> Set log level to DEBUG</li>
+                        <li><strong>Use test labels:</strong> More stable than display labels</li>
+                        <li><strong>Check network tab:</strong> Inspect API calls in browser</li>
+                        <li><strong>Verify selectors:</strong> Ensure UI elements exist</li>
+                    </ol>
+                    <p style="margin-top: 10px;">For more details, check the debugging guide at <a href="https://appian-locust.readthedocs.io/en/latest/debugging.html">ReadTheDocs</a></p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with ❤️ for Appian Performance Testing</p>
+            <p style="margin-top: 10px;">
+                <a href="https://appian-locust.readthedocs.io/" style="color: white;">Official Documentation</a> | 
+                <a href="https://github.com/mukundanramesh/appian-locust-support" style="color: white;">GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
