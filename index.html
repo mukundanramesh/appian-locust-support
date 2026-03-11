@@ -133,8 +133,48 @@
             overflow-x: auto;
             margin: 15px 0;
             font-family: 'Courier New', monospace;
-            white-space: pre;
+            white-space: pre-wrap;
+            word-wrap: break-word;
             line-height: 1.5;
+            position: relative;
+        }
+
+        .code-wrapper {
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .code-wrapper .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            z-index: 10;
+        }
+
+        .code-wrapper .copy-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .code-wrapper .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .code-wrapper .code-block {
+            margin: 0;
+            padding-right: 80px;
+            overflow-wrap: break-word;
+            word-break: break-all;
         }
 
         .chat-message .code-block {
@@ -280,8 +320,9 @@
                     <div class="step-content">
                         <h3>Download the Steering File</h3>
                         <p>Get <code>appian-locust-steering.md</code> from the repository</p>
-                        <div class="code-block">
-curl -O https://raw.githubusercontent.com/mukundanramesh/appian-locust-support/main/appian-locust-steering.md
+                        <div class="code-wrapper">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <div class="code-block">curl -O https://raw.githubusercontent.com/mukundanramesh/appian-locust-support/main/appian-locust-steering.md</div>
                         </div>
                     </div>
                 </div>
@@ -291,9 +332,10 @@ curl -O https://raw.githubusercontent.com/mukundanramesh/appian-locust-support/m
                     <div class="step-content">
                         <h3>Copy to Your Project</h3>
                         <p>Place it in your project's .kiro/steering directory</p>
-                        <div class="code-block">
-mkdir -p .kiro/steering
-mv appian-locust-steering.md .kiro/steering/
+                        <div class="code-wrapper">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <div class="code-block">mkdir -p .kiro/steering
+mv appian-locust-steering.md .kiro/steering/</div>
                         </div>
                         <p style="margin-top: 10px;"><em>Or copy to ~/.kiro/steering/ to use across all projects</em></p>
                     </div>
@@ -362,5 +404,26 @@ class UserActor(HttpUser):
             </p>
         </footer>
     </div>
+
+    <script>
+        function copyCode(button) {
+            const codeWrapper = button.parentElement;
+            const codeBlock = codeWrapper.querySelector('.code-block');
+            const code = codeBlock.textContent.trim();
+            
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                button.textContent = 'Error';
+            });
+        }
+    </script>
 </body>
 </html>
