@@ -1,0 +1,21 @@
+"appian-locust-mcp": {
+  "command": "/Users/mukundan.ramesh/Documents/appian-locust-support/appian-locust-mcp/.venv/bin/python",
+  "args": [
+    "/Users/mukundan.ramesh/Documents/appian-locust-support/appian-locust-mcp/server.py"
+  ],
+  "env": {
+    "APPIAN_LOCUST_REPOS": "https://gitlab.appian-stratus.com/appian/prod/solutions-cm-perf,https://gitlab.appian-stratus.com/appian/prod/perf-framework,https://gitlab.appian-stratus.com/appian/prod/perf-ae",
+    "APPIAN_LOCUST_SOURCE": "https://gitlab.com/appian-oss/appian-locust",
+    "GOOGLE_CHAT_SPACES": "https://chat.google.com/room/AAAAIJ6B3dk?cls=7"
+  },
+  "autoApprove": [
+    "get_appian_locust_guidance",
+    "generate_locust_script",
+    "debug_locust_script",
+    "search_repo_examples",
+    "get_latest_api_reference",
+    "search_chat_history",
+    "improve_script",
+    "explain_workflow"
+  ]
+}
